@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Imaginary Healthy Patient - 2&nbsp; Data Cleaning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./data-sunlight.html" rel="next">
+<link href="./data-load_data.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+</script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Register.StartupHook("TeX color Ready", function() {
+	     MathJax.Extension["TeX/color"].colors["wongBlack"] = '#000000';
+		 MathJax.Extension["TeX/color"].colors["wongGold"] = '#E69F00';
+		 MathJax.Extension["TeX/color"].colors["wongLightBlue"] = '#56B4E9';
+		 MathJax.Extension["TeX/color"].colors["wongGreen"] = '#009E73';
+		 MathJax.Extension["TeX/color"].colors["wongYellow"] = '#F0E442';
+		 MathJax.Extension["TeX/color"].colors["wongBlue"] = '#0072B2';
+		 MathJax.Extension["TeX/color"].colors["wongOrange"] = '#D55E00';
+		 MathJax.Extension["TeX/color"].colors["wongPurple"] = '#CC79A7';
+		 
+		 
+		 MathJax.Extension["TeX/color"].colors["IBMBlue"] = '#648FFF';
+		 MathJax.Extension["TeX/color"].colors["IBMPurple"] = '#785EF0';
+		 MathJax.Extension["TeX/color"].colors["IBMMagenta"] = '#DC267F';
+		 MathJax.Extension["TeX/color"].colors["IBMOrange"] = '#FE6100';
+		 MathJax.Extension["TeX/color"].colors["IBMYellow"] = '#FFB000';
+	});
+</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-load_data.html">I Data</a></li><li class="breadcrumb-item"><a href="./data-cleaning.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Cleaning</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Imaginary Healthy Patient</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">I Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-load_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Load Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-cleaning.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-sunlight.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sunlight Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-descriptive_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">II Classifiers</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./classif-estimations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./classif-results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">III SHAP</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shap-estimations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estimations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shap-results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">IV Robustness Checks: MHI-3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-data-cleaning-mhi3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-descriptive_statistics-mhi3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-classif-estimations-mhi3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Classification Estimations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-classif-results-mhi3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Classification Results</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-shap-estimations-mhi3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">SHAP Estimations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-shap-results-mhi3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">SHAP Results</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">V Robustness Checks: SAH</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-data-cleaning-sah.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-descriptive_statistics-sah.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-classif-estimations-sah.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Estimations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-classif-results-sah.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-shap-estimations-sah.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Estimations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./robustness-shap-results-sah.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">SHAP Results</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#looking-at-missing-data" id="toc-looking-at-missing-data" class="nav-link active" data-scroll-target="#looking-at-missing-data"><span class="header-section-number">2.1</span> Looking at missing data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-load_data.html">I Data</a></li><li class="breadcrumb-item"><a href="./data-cleaning.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Cleaning</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-data-cleaning" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Cleaning</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This chapter presents the codes used to clean data. It especially explains the different steps we took to deal with missing values.</p>
+</div>
+</div>
+<p>Let us load the data obtained in <a href="data-load_data.html" class="quarto-xref">Chapter&nbsp;<span>1</span></a>.</p>
+<p>Let us first load {<code>tidyverse</code>}:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<p>Then the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../data/df_merged.rda"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18561   841</code></pre>
+</div>
+</div>
+<p>Let us keep track on the number of observation each time we filter out observations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nb_obs_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">step =</span> <span class="fu">c</span>(<span class="st">"raw"</span>, <span class="st">"age_15"</span>), </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">19940</span>, <span class="fu">nrow</span>(df))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>nb_obs_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  step       n
+  &lt;chr&gt;  &lt;dbl&gt;
+1 raw    19940
+2 age_15 18561</code></pre>
+</div>
+</div>
+<p>We can create a table with the labels associated with the name of each variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>variable_names <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>variable, <span class="sc">~</span>label, <span class="sc">~</span>type,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_depress"</span>, <span class="st">"Depression"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_score_t_corrected"</span>, <span class="st">"MHI-5 Score"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_etat_sante"</span>, <span class="st">"Self-Assessed Health Condition"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_age"</span>, <span class="st">"Age"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_sexe"</span>, <span class="st">"Gender"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_couple"</span>, <span class="st">"Couple"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_etatleg"</span>, <span class="st">"Marital Status"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_statut"</span>, <span class="st">"Professional Status"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_ss"</span>, <span class="st">"Social Security"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_regime"</span>, <span class="st">"Social Security System"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_rap_pcs8"</span>, <span class="st">"Occupation"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_ald"</span>, <span class="st">"Long-term condition (Self-declared)"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_ald_am"</span>, <span class="st">"Long-term condition (SNIIRAM)"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Household</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_rap_zau"</span>, <span class="st">"Zoning in Urban Areas"</span>, <span class="st">"ordinal"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_region"</span>, <span class="st">"Region"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_revdetail"</span>, <span class="st">"Income"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_revucinsee"</span>, <span class="st">"Net Income per Cons. Unit"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_tu"</span>,<span class="st">"Size Urban Area"</span>, <span class="st">"ordinal"</span>, </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_nbpers"</span>, <span class="st">"Household size"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ensol_2011"</span>, <span class="st">"Sunlight"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "MENAGE_revenu", "Income (class)", "ordinal", </span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "MENAGE_typmen", "Household Type", "qualitative", </span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "CODE_REG", "Region Code", "qualitative",</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mutual Insurance</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MUTUELLE_assu"</span>, <span class="st">"Insurance"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MUTUELLE_typcc"</span>, <span class="st">"Mutual Coverage Type"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Expenses</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Outpatient ~= Sum of the others</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depamb"</span>, <span class="st">"Exp. Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depomn"</span>, <span class="st">"Exp. General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depspe"</span>, <span class="st">"Exp. Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deppha"</span>, <span class="st">"Exp. Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depkin"</span>, <span class="st">"Exp. Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depinf"</span>, <span class="st">"Exp. Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depden"</span>, <span class="st">"Exp. Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depmat"</span>, <span class="st">"Exp. Equipment"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deptra"</span>, <span class="st">"Exp. Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depopt"</span>, <span class="st">"Exp. Optical"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deppro"</span>, <span class="st">"Exp. Prostheses"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depurg"</span>, <span class="st">"Exp. Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reimbursement</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remamb"</span>, <span class="st">"Reimbursement Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remomn"</span>, <span class="st">"Reimbursement General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remspe"</span>, <span class="st">"Reimbursement Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_rempha"</span>, <span class="st">"Reimbursement Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remkin"</span>, <span class="st">"Reimbursement Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_reminf"</span>, <span class="st">"Reimbursement Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remden"</span>, <span class="st">"Reimbursement Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remmat"</span>, <span class="st">"Reimbursement Equipment"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remtra"</span>, <span class="st">"Reimbursement Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remopt"</span>, <span class="st">"Reimbursement Optical"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_rempro"</span>, <span class="st">"Reimbursement Prostheses"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remurg"</span>, <span class="st">"Reimbursement Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Co-payment (Ticket moderateur)</span></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmamb"</span>, <span class="st">"Co-payment Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmomn"</span>, <span class="st">"Co-payment General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmspe"</span>, <span class="st">"Co-payment Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmpha"</span>, <span class="st">"Co-payment Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmkin"</span>, <span class="st">"Co-payment Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tminf"</span>, <span class="st">"Co-payment Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmden"</span>, <span class="st">"Co-payment Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmmat"</span>, <span class="st">"Co-payment Equipment"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmtra"</span>, <span class="st">"Co-payment Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmopt"</span>, <span class="st">"Co-payment Optical"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmpro"</span>, <span class="st">"Co-payment Prostheses"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmurg"</span>, <span class="st">"Co-payment Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extra-fees</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaamb"</span>, <span class="st">"Extra-fees Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaomn"</span>, <span class="st">"Extra-fees General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaspe"</span>, <span class="st">"Extra-fees Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpapha"</span>, <span class="st">"Extra-fees Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpakin"</span>, <span class="st">"Extra-fees Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpainf"</span>, <span class="st">"Extra-fees Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaden"</span>, <span class="st">"Extra-fees Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpamat"</span>, <span class="st">"Extra-fees Equipment"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpatra"</span>, <span class="st">"Extra-fees Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaopt"</span>, <span class="st">"Extra-fees Optical"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpapro"</span>, <span class="st">"Extra-fees Prostheses"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaurg"</span>, <span class="st">"Extra-fees Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Deductible (Franchise)</span></span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_framb"</span>, <span class="st">"Deduct. Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_fromn"</span>, <span class="st">"Deduct. General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frspe"</span>, <span class="st">"Deduct. Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frpha"</span>, <span class="st">"Deduct. Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frkin"</span>, <span class="st">"Deduct. Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frinf"</span>, <span class="st">"Deduct. Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frden"</span>, <span class="st">"Deduct. Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_frmat", "Deduct. Equipment", "numerical", # does not exist in the data</span></span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frtra"</span>, <span class="st">"Deduct. Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_fropt", "Deduct. Optical", "numerical",</span></span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_frpro", "Deduct. Prostheses", "numerical",</span></span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frurg"</span>, <span class="st">"Deduct. Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_seac_omn"</span>, <span class="st">"No. Medical Sessions General Pract."</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_seac_spe"</span>,  <span class="st">"No. Medical Sessions Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_cons"</span>, <span class="st">"Waiver General Practitioner"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_dent"</span>, <span class="st">"Waiver Dental Care"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_fin"</span>, <span class="st">"Waiver Other Health Care"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_loin"</span>, <span class="st">"Waiver Health Care Too Far"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_long"</span>, <span class="st">"Waiver Appointment Delay Too Long"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Working conditions</span></span>
+<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_depech"</span>, <span class="st">"Have to Hurry to Do Job"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_liberte"</span>, <span class="st">"Very Little Freedom to Do Job"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_apprend"</span>, <span class="st">"Job Allows to Learn New Things"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_aidecol"</span>, <span class="st">"Colleagues Help Carry out Tasks"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_travnuit"</span>, <span class="st">"Job Requires not to Sleep Betw. Midnight and 5 a.m."</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_repet"</span>, <span class="st">"Repetitive Work under Time Constraints / Line Job"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_lourd"</span>, <span class="st">"Exposed to Carrying Heavy Loads"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_posture"</span>, <span class="st">"Exposed to Painful Postures"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_produit"</span>, <span class="st">"Exposed to Harmful/Toxic Products/Substances"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_association"</span>, <span class="st">"Participation in Group Activities"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsami"</span>, <span class="st">"Frequency Meeting with Friends/Neighbors"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsasso"</span>, <span class="st">"Frequency Meeting with People in Organizations"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpscolleg"</span>, <span class="st">"Frequency Meeting with Colleagues Outside Work"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsfamil"</span>, <span class="st">"Frequency Meeting with Family Living Outside Household"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_mere_etude"</span>, <span class="st">"Mother's Level of Education"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_pere_etude"</span>, <span class="st">"Father's Level of Education"</span>, <span class="st">"qualitative"</span></span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-149"><a href="#cb7-149" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(variable_names, <span class="at">file =</span> <span class="st">"../data/out/variable_names.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We only keep the variables in the table <code>variable_names</code>, as well as those created at the end of <a href="data-load_data.html" class="quarto-xref">CHapter&nbsp;<span>1</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!!</span>variable_names<span class="sc">$</span>variable, inf_q1_mhi_5, inf_q1_mhi_3, id) <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>PERSONNE_etatleg, <span class="sc">-</span>MENAGE_revdetail, <span class="sc">-</span>MENAGE_rap_zau,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>SOINS_remamb, <span class="sc">-</span>SOINS_tmamb,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>SOINS_dpaamb, <span class="sc">-</span>SOINS_pf_framb</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PERSONNE_pb_depress =</span> <span class="fu">as.character</span>(PERSONNE_pb_depress))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note: the following variables were excluded for the following reasons:</p>
+<ul>
+<li><code>PERSONNE_etatleg</code> gives the marital status; we keep <code>PERSONNE_couple</code> which states whether the person lives as a couple</li>
+<li><code>MENAGE_revdetail</code> is the income in numerical values; we prefer keeping <code>MENAGE_revucinsee</code> (Net Income per Cons. Unit)</li>
+<li><code>MENAGE_rap_zau</code>: the variable <code>MENAGE_tu</code> already provides a very similar information</li>
+<li><code>SOINS_remamb</code>, <code>SOINS_tmamb</code>, <code>SOINS_dpaamb</code>, <code>SOINS_pf_framb</code>SOINS_pf_framb : these are the sum of other reimbursements; they would therefore cause colinearity issues.</li>
+</ul>
+<p>Some additional information should be provided regarding healthcare variables. These variables are composed of :</p>
+<ul>
+<li>expenditures (<code>dep</code>, <em>dépenses</em>)</li>
+<li>health insurance reimbursements (<code>remb</code>, <em>remboursements par l’assurance maladie</em>)</li>
+<li>co-payment (<code>tm</code>, <em>ticket modérateur</em>)</li>
+<li>fee overruns (<code>dpa</code>, <em>dépassement d’honoraires, non remboursés</em>)</li>
+<li>amounts to be charged (<code>cha</code>, <em>montants à charge</em>)</li>
+<li>deductible (<code>pf_fr</code>, <em>Participation forfaitaire/Franchise</em>)</li>
+<li>guaranteed participation (<code>pa</code>, <em>Participation assurée</em>).</li>
+</ul>
+<p>The following relationships exist between these variables:</p>
+<ul>
+<li><code>dep = cha + rem + pf_fr + pa</code></li>
+<li><code>cha = tm + dpa</code></li>
+<li><code>dep = tm + dpa + rem + pf_fr + pa</code>.</li>
+</ul>
+<p>To avoid collinearity problems, we retain only the following variables in the final model: <code>tm</code>, <code>dpa</code>, <code>rem</code>, <code>pf_fr</code>, <code>pa</code>.</p>
+<p>Then the variables that begin with <code>SOINS_dep</code> need to be removed:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>retirer <span class="ot">&lt;-</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  variable_names<span class="sc">$</span>variable[<span class="fu">str_which</span>(variable_names<span class="sc">$</span>variable, <span class="st">"^SOINS_dep"</span>)]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>retirer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "SOINS_depamb" "SOINS_depomn" "SOINS_depspe" "SOINS_deppha" "SOINS_depkin"
+ [6] "SOINS_depinf" "SOINS_depden" "SOINS_depmat" "SOINS_deptra" "SOINS_depopt"
+[11] "SOINS_deppro" "SOINS_depurg"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-!!</span>retirer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us remove people for which the MHI-5 score was not computed:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df_tmp<span class="sc">$</span>inf_q1_mhi_5))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6188</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(inf_q1_mhi_5))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us keep track on the number of individuals that were removed:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nb_obs_df <span class="ot">&lt;-</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  nb_obs_df <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">step =</span> <span class="st">"missing_mhi5_score"</span>, <span class="at">n =</span> <span class="fu">nrow</span>(df_tmp))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>nb_obs_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  step                   n
+  &lt;chr&gt;              &lt;dbl&gt;
+1 raw                19940
+2 age_15             18561
+3 missing_mhi5_score 12373</code></pre>
+</div>
+</div>
+<p>Let us remove the individuals who did not report their status with regard to depression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_tmp<span class="sc">$</span>PERSONNE_pb_depress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Depression No depression  Not reported 
+          673         11199           501 </code></pre>
+</div>
+</div>
+<p>Distribution of MHI-5 score among the individuals that are about to be discarded:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"Not reported"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(inf_q1_mhi_5) <span class="sc">|&gt;</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span> <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">digits =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  inf_q1_mhi_5     n  prop
+  &lt;fct&gt;        &lt;int&gt; &lt;dbl&gt;
+1 &lt;=Q1           147  29.3
+2 &gt;Q1            354  70.7</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">!=</span> <span class="st">"Not reported"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us keep track on the number of individuals that were removed:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>nb_obs_df <span class="ot">&lt;-</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  nb_obs_df <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">step =</span> <span class="st">"pb_depress_not_reported"</span>, <span class="at">n =</span> <span class="fu">nrow</span>(df_tmp))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>nb_obs_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  step                        n
+  &lt;chr&gt;                   &lt;dbl&gt;
+1 raw                     19940
+2 age_15                  18561
+3 missing_mhi5_score      12373
+4 pb_depress_not_reported 11872</code></pre>
+</div>
+</div>
+<p>Let us focus on the MHI-5 score here and discard the MHI-3. Let us create a variable (<code>status</code>) that classifies individuals depending on their MHI-5 score and their answer regarding depression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>inf_q1_mhi_3) <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="fu">case_when</span>(</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"Depression"</span> <span class="sc">&amp;</span> inf_q1_mhi_5 <span class="sc">==</span> <span class="st">"&lt;=Q1"</span> <span class="sc">~</span> <span class="st">"D_and_inf_Q1"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"Depression"</span> <span class="sc">&amp;</span> inf_q1_mhi_5 <span class="sc">==</span> <span class="st">"&gt;Q1"</span> <span class="sc">~</span> <span class="st">"D_and_sup_Q1"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"No depression"</span> <span class="sc">&amp;</span> inf_q1_mhi_5 <span class="sc">==</span> <span class="st">"&lt;=Q1"</span> <span class="sc">~</span> <span class="st">"Not_D_and_inf_Q1"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"No depression"</span> <span class="sc">&amp;</span> inf_q1_mhi_5 <span class="sc">==</span> <span class="st">"&gt;Q1"</span> <span class="sc">~</span> <span class="st">"Not_D_and_sup_Q1"</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"Not reported"</span> <span class="sc">&amp;</span> inf_q1_mhi_5 <span class="sc">==</span> <span class="st">"&lt;=Q1"</span> <span class="sc">~</span> <span class="st">"Not_R_and_inf_Q1"</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"Not reported"</span> <span class="sc">&amp;</span> inf_q1_mhi_5 <span class="sc">==</span> <span class="st">"&gt;Q1"</span> <span class="sc">~</span> <span class="st">"Not_R_and_sup_Q1"</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span><span class="sc">~</span><span class="st">"problem"</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can look at the distribution of this newly created variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_tmp<span class="sc">$</span>status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    D_and_inf_Q1     D_and_sup_Q1 Not_D_and_inf_Q1 Not_D_and_sup_Q1 
+             572              101             3193             8006 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span><span class="fu">prop.table</span>(<span class="fu">table</span>(df_tmp<span class="sc">$</span>status)), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    D_and_inf_Q1     D_and_sup_Q1 Not_D_and_inf_Q1 Not_D_and_sup_Q1 
+            4.82             0.85            26.90            67.44 </code></pre>
+</div>
+</div>
+<p>No values coded as <code>problem</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"problem"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(status, PERSONNE_pb_depress, inf_q1_mhi_5) <span class="sc">|&gt;</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(inf_q1_mhi_5))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 3
+# ℹ 3 variables: status &lt;chr&gt;, PERSONNE_pb_depress &lt;chr&gt;, inf_q1_mhi_5 &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p>We are interested in people who self report having not experienced depression during the past year. Other people will be discarded. The proportion of imaginary healthy patients among the individuals that are about to be discarded:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span> status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Not_D_and_inf_Q1"</span>, <span class="st">"Not_D_and_sup_Q1"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(inf_q1_mhi_5, status) <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span> <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">digits =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  inf_q1_mhi_5 status           n  prop
+  &lt;fct&gt;        &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt;
+1 &lt;=Q1         D_and_inf_Q1   572  85.0
+2 &gt;Q1          D_and_sup_Q1   101  15.0</code></pre>
+</div>
+</div>
+<p>Let us discard other people. We define the <code>status</code> variable as a binary factor:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(status <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Not_D_and_inf_Q1"</span>, <span class="st">"Not_D_and_sup_Q1"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">status =</span> <span class="fu">factor</span>(</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    status, <span class="at">level =</span> <span class="fu">c</span>(<span class="st">"Not_D_and_inf_Q1"</span>, <span class="st">"Not_D_and_sup_Q1"</span>))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us keep track on the number of individuals that were removed:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>nb_obs_df <span class="ot">&lt;-</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  nb_obs_df <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(<span class="at">step =</span> <span class="st">"not_D"</span>, <span class="at">n =</span> <span class="fu">nrow</span>(df_tmp))</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>nb_obs_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  step                        n
+  &lt;chr&gt;                   &lt;dbl&gt;
+1 raw                     19940
+2 age_15                  18561
+3 missing_mhi5_score      12373
+4 pb_depress_not_reported 11872
+5 not_D                   11199</code></pre>
+</div>
+</div>
+<section id="looking-at-missing-data" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="looking-at-missing-data"><span class="header-section-number">2.1</span> Looking at missing data</h2>
+<p>We need to check where are the missing data. Let us have a look at the “Working conditions” questions (columns which begin with <code>QST_c</code>), and count the number and corresponding proportion of missing values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">"^QST_c"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(x){</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tibble</span>(</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">no_obs =</span> <span class="fu">length</span>(x),</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">nb_not_surveyed =</span> <span class="fu">sum</span>(x <span class="sc">==</span> <span class="st">"Not surveyed"</span>),</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">prop =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> nb_not_surveyed <span class="sc">/</span> no_obs, <span class="dv">2</span>))</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.id =</span> <span class="st">"variable"</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-missing-working-conditions" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-missing-working-conditions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Missing values in the Working Conditions questions
+</figcaption>
+<div aria-describedby="tbl-missing-working-conditions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<table class="lightable-classic do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">no_obs</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">nb_not_surveyed</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">prop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_depech</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_liberte</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_apprend</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_aidecol</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_travnuit</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_repet</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_lourd</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_posture</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_produit</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">5714</td>
+<td style="text-align: right;">51.02</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>As we can see from the previous result, around 50% of respondents did not give an answer to the questions related to work. It does not only concern unemployed people (1,289 individuals are classified as “Inactive having never worked”):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_tmp<span class="sc">$</span>PERSONNE_rap_pcs8) <span class="sc">|&gt;</span> <span class="fu">sort</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                               Farmer                     Craftsman, trader 
+                                  383                                   567 
+                     Unskilled worker                   Commercial employee 
+                                  892                                  1315 
+Executive and intellectual profession               Administrative employee 
+                                 1443                                  1498 
+         Inactive having never worked                        Skilled worker 
+                                 1595                                  1621 
+              Intermediate occupation 
+                                 1875 </code></pre>
+</div>
+</div>
+<p>Let us have a look at the distribution of <code>PERSONNE_rap_pcs8</code> for individuals for which <code>QST_ct_depech</code> is missing:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">QST_ct_depech</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Not surveyed"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  magrittr<span class="sc">::</span><span class="fu">extract2</span>(<span class="st">"PERSONNE_rap_pcs8"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                               Farmer                     Craftsman, trader 
+                                  252                                   263 
+Executive and intellectual profession               Intermediate occupation 
+                                  513                                   668 
+              Administrative employee                   Commercial employee 
+                                  617                                   598 
+                       Skilled worker                      Unskilled worker 
+                                  702                                   498 
+         Inactive having never worked 
+                                 1595 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(QST_ct_depech <span class="sc">==</span> <span class="st">"Not surveyed"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_at</span>(<span class="fu">vars</span>(<span class="fu">matches</span>(<span class="st">"^QST_c"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5,714 × 9
+   QST_ct_depech QST_ct_liberte QST_ct_apprend QST_ct_aidecol QST_ct_travnuit
+   &lt;fct&gt;         &lt;fct&gt;          &lt;fct&gt;          &lt;fct&gt;          &lt;fct&gt;          
+ 1 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+ 2 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+ 3 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+ 4 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+ 5 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+ 6 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+ 7 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+ 8 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+ 9 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+10 Not surveyed  Not surveyed   Not surveyed   Not surveyed   Not surveyed   
+# ℹ 5,704 more rows
+# ℹ 4 more variables: QST_ct_repet &lt;fct&gt;, QST_ct_lourd &lt;fct&gt;,
+#   QST_ct_posture &lt;fct&gt;, QST_ct_produit &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p>We do the same for variables which give information relative to social interactions and which give information on the parents’ background (<em>i.e.</em>, variables that begin with <code>QES</code>). First, let us have a look at the proportion of NA in those:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">"^QES"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(x) {</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tibble</span>(</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">no_obs =</span> <span class="fu">length</span>(x),</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">nb_not_surveyed =</span> <span class="fu">sum</span>(x <span class="sc">==</span> <span class="st">"Not surveyed"</span>, <span class="at">na.rm=</span>T),</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">prop =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> nb_not_surveyed <span class="sc">/</span> no_obs, <span class="dv">2</span>))</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.id =</span> <span class="st">"variable"</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-missing-qes" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-missing-qes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: Missing values in QES variables
+</figcaption>
+<div aria-describedby="tbl-missing-qes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<table class="lightable-classic do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">no_obs</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">nb_not_surveyed</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">prop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">QES_association</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_tpsami</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_tpsasso</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_tpscolleg</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_tpsfamil</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_mere_etude</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_pere_etude</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Let us have a look at the proportion of missing values in the current dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>pct_missing <span class="ot">&lt;-</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(df_tmp, <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(x)) <span class="sc">/</span> <span class="fu">length</span>(x), <span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>pct_missing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              SOINS_remomn               SOINS_remspe 
+                      45.4                       45.4 
+              SOINS_rempha               SOINS_remkin 
+                      45.4                       45.4 
+              SOINS_reminf               SOINS_remden 
+                      45.4                       45.4 
+              SOINS_remmat               SOINS_remtra 
+                      45.4                       45.4 
+              SOINS_remopt               SOINS_rempro 
+                      45.4                       45.4 
+              SOINS_remurg                SOINS_tmomn 
+                      45.4                       45.4 
+               SOINS_tmspe                SOINS_tmpha 
+                      45.4                       45.4 
+               SOINS_tmkin                SOINS_tminf 
+                      45.4                       45.4 
+               SOINS_tmden                SOINS_tmmat 
+                      45.4                       45.4 
+               SOINS_tmtra                SOINS_tmopt 
+                      45.4                       45.4 
+               SOINS_tmpro                SOINS_tmurg 
+                      45.4                       45.4 
+              SOINS_dpaomn               SOINS_dpaspe 
+                      45.4                       45.4 
+              SOINS_dpapha               SOINS_dpakin 
+                      45.4                       45.4 
+              SOINS_dpainf               SOINS_dpaden 
+                      45.4                       45.4 
+              SOINS_dpamat               SOINS_dpatra 
+                      45.4                       45.4 
+              SOINS_dpaopt               SOINS_dpapro 
+                      45.4                       45.4 
+              SOINS_dpaurg             SOINS_pf_fromn 
+                      45.4                       45.4 
+            SOINS_pf_frspe             SOINS_pf_frpha 
+                      45.4                       45.4 
+            SOINS_pf_frkin             SOINS_pf_frinf 
+                      45.4                       45.4 
+            SOINS_pf_frden             SOINS_pf_frtra 
+                      45.4                       45.4 
+            SOINS_pf_frurg             SOINS_seac_omn 
+                      45.4                       45.4 
+            SOINS_seac_spe          MENAGE_revucinsee 
+                      45.4                       14.0 
+               PERSONNE_ss            PERSONNE_regime 
+                       0.4                        0.2 
+         PERSONNE_rap_pcs8        PERSONNE_pb_depress 
+                       0.1                        0.0 
+PERSONNE_score_t_corrected        PERSONNE_etat_sante 
+                       0.0                        0.0 
+              PERSONNE_age              PERSONNE_sexe 
+                       0.0                        0.0 
+           PERSONNE_couple            PERSONNE_statut 
+                       0.0                        0.0 
+              PERSONNE_ald               SOINS_ald_am 
+                       0.0                        0.0 
+             MENAGE_region                  MENAGE_tu 
+                       0.0                        0.0 
+             MENAGE_nbpers                 ensol_2011 
+                       0.0                        0.0 
+             MUTUELLE_assu             MUTUELLE_typcc 
+                       0.0                        0.0 
+      OPINION1_renonc_cons       OPINION1_renonc_dent 
+                       0.0                        0.0 
+       OPINION1_renonc_fin       OPINION1_renonc_loin 
+                       0.0                        0.0 
+      OPINION1_renonc_long              QST_ct_depech 
+                       0.0                        0.0 
+            QST_ct_liberte             QST_ct_apprend 
+                       0.0                        0.0 
+            QST_ct_aidecol            QST_ct_travnuit 
+                       0.0                        0.0 
+              QST_ct_repet               QST_ct_lourd 
+                       0.0                        0.0 
+            QST_ct_posture             QST_ct_produit 
+                       0.0                        0.0 
+           QES_association                 QES_tpsami 
+                       0.0                        0.0 
+               QES_tpsasso              QES_tpscolleg 
+                       0.0                        0.0 
+              QES_tpsfamil             QES_mere_etude 
+                       0.0                        0.0 
+            QES_pere_etude               inf_q1_mhi_5 
+                       0.0                        0.0 
+                        id                     status 
+                       0.0                        0.0 </code></pre>
+</div>
+</div>
+<p>Ordinal variables need to be altered prior to the estimation (because of SHAP). We change them to numerical variables. To keep a track of the corresponding numerical values associated with each label, we create a table.</p>
+<p>Then, we create the table <code>correspondance_ordinal</code> that contains the numerical values associated with the different categories.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>correspondance_ordinal <span class="ot">&lt;-</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable =</span> <span class="st">"MENAGE_tu"</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">old_value =</span> df_tmp<span class="sc">$</span>MENAGE_tu <span class="sc">|&gt;</span> <span class="fu">unique</span>(),</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">new_value =</span> <span class="fu">as.numeric</span>(df_tmp<span class="sc">$</span>MENAGE_tu) <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>correspondance_ordinal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  variable  old_value               new_value
+  &lt;chr&gt;     &lt;ord&gt;                       &lt;dbl&gt;
+1 MENAGE_tu Small Municipality              1
+2 MENAGE_tu Medium Municipality             2
+3 MENAGE_tu Not surveyed                    6
+4 MENAGE_tu Paris metropolitan area         4
+5 MENAGE_tu Large Municipality              3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(correspondance_ordinal, <span class="at">file =</span> <span class="st">"../data/out/correspondance_ordinal.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have stored the changes we plan on applying, we can proceed to these changes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.character, as.factor) <span class="sc">|&gt;</span> </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MENAGE_tu =</span> <span class="fu">as.numeric</span>(df_tmp<span class="sc">$</span>MENAGE_tu))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We need to remove the variables that wee used to construct the target variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>PERSONNE_pb_depress,</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>inf_q1_mhi_5,</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>PERSONNE_score_t_corrected,</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>PERSONNE_etat_sante</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we remove observations that contain missing values. Let us keep a track on the number of observation removed at each time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>nb_obs <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df_tmp)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>eye_on_proportions <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode=</span><span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">ncol</span>(df_tmp))</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(p <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(df_tmp)){</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  variable_to_check <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df_tmp)[p]</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  eye_on_proportions[[p]] <span class="ot">&lt;-</span> </span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(variable_to_check))) <span class="sc">|&gt;</span> </span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(status) <span class="sc">|&gt;</span> </span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">|&gt;</span> <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filtering out the observations with missing values</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="sc">!!</span><span class="fu">sym</span>(variable_to_check)))</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">nrow</span>(df_tmp) <span class="sc">&lt;</span> nb_obs){</span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>    nb_obs_df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tibble</span>(<span class="at">step =</span> variable_to_check, </span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>             <span class="at">n =</span> <span class="fu">nrow</span>(df_tmp))</span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>    nb_obs_df <span class="ot">&lt;-</span> </span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>      nb_obs_df <span class="sc">|&gt;</span> </span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">bind_rows</span>(nb_obs_df_tmp)</span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a>    nb_obs <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df_tmp)</span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(eye_on_proportions) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df_tmp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us have a look at the <code>nb_obs_df</code> table. The first 4 rows give:</p>
+<ol type="1">
+<li>the number of observations with the raw sample</li>
+<li>how many observations were left after removing people younger than 15 years old</li>
+<li>homw many observations were left when removing individuals who did not report their status with regard to depression</li>
+<li>how many individuals reported feeling not depressed over the last 12 months.</li>
+</ol>
+<p>The remaining rows indicate how many individuals (column <code>n</code>) are left in the sample once individuals with missing data for the variable reported in column <code>step</code> are removed from the sample. The number given in column <code>n_drop</code> indicates the loss due to lack of data for the variable of interest.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>nb_obs_df <span class="sc">|&gt;</span> </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_drop =</span> n <span class="sc">-</span> dplyr<span class="sc">::</span><span class="fu">lag</span>(n)) <span class="sc">|&gt;</span> </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-remaining-data-and-losses" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-remaining-data-and-losses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.3: Number of remaining data and loss of individuals due to missing data
+</figcaption>
+<div aria-describedby="tbl-remaining-data-and-losses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<table class="lightable-classic do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">step</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n_drop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">raw</td>
+<td style="text-align: right;">19940</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age_15</td>
+<td style="text-align: right;">18561</td>
+<td style="text-align: right;">-1379</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">missing_mhi5_score</td>
+<td style="text-align: right;">12373</td>
+<td style="text-align: right;">-6188</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pb_depress_not_reported</td>
+<td style="text-align: right;">11872</td>
+<td style="text-align: right;">-501</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">not_D</td>
+<td style="text-align: right;">11199</td>
+<td style="text-align: right;">-673</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_ss</td>
+<td style="text-align: right;">11151</td>
+<td style="text-align: right;">-48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_regime</td>
+<td style="text-align: right;">11147</td>
+<td style="text-align: right;">-4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_rap_pcs8</td>
+<td style="text-align: right;">11137</td>
+<td style="text-align: right;">-10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MENAGE_revucinsee</td>
+<td style="text-align: right;">9576</td>
+<td style="text-align: right;">-1561</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SOINS_remomn</td>
+<td style="text-align: right;">5306</td>
+<td style="text-align: right;">-4270</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_tpsasso</td>
+<td style="text-align: right;">5305</td>
+<td style="text-align: right;">-1</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>At the end, we are left with a dataset with no more missing data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(df_tmp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Lastly, we remove the region variable and the self-declared health condition:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>var_to_temove <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"MENAGE_region"</span>, <span class="st">"code_insee"</span>, <span class="st">"MENAGE_region_nom"</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>var_to_keep <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df_tmp)[<span class="sc">!</span><span class="fu">colnames</span>(df_tmp) <span class="sc">%in%</span> var_to_temove]</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!!</span>var_to_keep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The dimension of the final dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_tmp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5305   81</code></pre>
+</div>
+</div>
+<p>Recall we coded missing values for categorical variables as <code>Not reported</code> and missing values because the individuals were not included in the sub-survey as <code>Not surveyed</code>. Let us look at how many observation fall into each of those categories:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.factor) <span class="sc">|&gt;</span> </span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">tibble</span>(<span class="at">nb_NA =</span> <span class="fu">sum</span>(. <span class="sc">==</span> <span class="st">"Not reported"</span>),</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">nb_not_surveyed =</span> <span class="fu">sum</span>(. <span class="sc">==</span> <span class="st">"Not surveyed"</span>)),</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.id =</span> <span class="st">"variable"</span></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">variable</th>
+<th style="text-align: right;">nb_NA</th>
+<th style="text-align: right;">nb_not_surveyed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_sexe</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_couple</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_statut</td>
+<td style="text-align: right;">559</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_ss</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_regime</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_rap_pcs8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_ald</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SOINS_ald_am</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MUTUELLE_assu</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">680</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MUTUELLE_typcc</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">680</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OPINION1_renonc_cons</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OPINION1_renonc_dent</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OPINION1_renonc_fin</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OPINION1_renonc_loin</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OPINION1_renonc_long</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_depech</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_liberte</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_apprend</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_aidecol</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_travnuit</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_repet</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_lourd</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_posture</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_produit</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">2725</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_association</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_tpsami</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_tpsasso</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_tpscolleg</td>
+<td style="text-align: right;">484</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_tpsfamil</td>
+<td style="text-align: right;">139</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_mere_etude</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_pere_etude</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">status</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We decide here to merge these two different values as <code>No answer</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">.cols =</span> is.factor<span class="sc">|</span>is.character,</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.fns =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fct_recode</span>(</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>          x,</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>          <span class="st">"No answer"</span> <span class="ot">=</span> <span class="st">"Not reported"</span>,</span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>          <span class="st">"No answer"</span> <span class="ot">=</span> <span class="st">"Not surveyed"</span></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.factor) <span class="sc">|&gt;</span> </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">tibble</span>(<span class="at">nb_NA =</span> <span class="fu">sum</span>(. <span class="sc">==</span> <span class="st">"No answer"</span>)),</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.id =</span> <span class="st">"variable"</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">variable</th>
+<th style="text-align: right;">nb_NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_sexe</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_couple</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_statut</td>
+<td style="text-align: right;">559</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_ss</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_regime</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_rap_pcs8</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_ald</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SOINS_ald_am</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MUTUELLE_assu</td>
+<td style="text-align: right;">696</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MUTUELLE_typcc</td>
+<td style="text-align: right;">680</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OPINION1_renonc_cons</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OPINION1_renonc_dent</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OPINION1_renonc_fin</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OPINION1_renonc_loin</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OPINION1_renonc_long</td>
+<td style="text-align: right;">1092</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_depech</td>
+<td style="text-align: right;">2754</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_liberte</td>
+<td style="text-align: right;">2766</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_apprend</td>
+<td style="text-align: right;">2752</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_aidecol</td>
+<td style="text-align: right;">2761</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_travnuit</td>
+<td style="text-align: right;">2761</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_repet</td>
+<td style="text-align: right;">2763</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_lourd</td>
+<td style="text-align: right;">2762</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QST_ct_posture</td>
+<td style="text-align: right;">2760</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QST_ct_produit</td>
+<td style="text-align: right;">2760</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_association</td>
+<td style="text-align: right;">108</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_tpsami</td>
+<td style="text-align: right;">134</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_tpsasso</td>
+<td style="text-align: right;">243</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_tpscolleg</td>
+<td style="text-align: right;">499</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_tpsfamil</td>
+<td style="text-align: right;">154</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QES_mere_etude</td>
+<td style="text-align: right;">99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QES_pere_etude</td>
+<td style="text-align: right;">98</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">status</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let us remove the 12 observations where the couple status is not reported (too few observations for this category). The proportion of imaginary healthy patients among the individuals that are about to be discarded:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_couple <span class="sc">==</span> <span class="st">"No answer"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(df <span class="sc">|&gt;</span> <span class="fu">select</span>(id, inf_q1_mhi_5), <span class="at">by =</span> <span class="st">"id"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(inf_q1_mhi_5, status) <span class="sc">|&gt;</span> </span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">|&gt;</span> <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">digits =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  inf_q1_mhi_5 status               n  prop
+  &lt;fct&gt;        &lt;fct&gt;            &lt;int&gt; &lt;dbl&gt;
+1 &lt;=Q1         Not_D_and_inf_Q1     1  8.33
+2 &gt;Q1          Not_D_and_sup_Q1    11 91.7 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_couple <span class="sc">!=</span> <span class="st">"No answer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And we save the results:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_tmp</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df_clean, <span class="at">file =</span> <span class="st">"../data/df_clean.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data-load_data.html" class="pagination-link" aria-label="Load Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Load Data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data-sunlight.html" class="pagination-link" aria-label="Sunlight Data">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sunlight Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
