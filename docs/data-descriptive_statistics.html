@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Imaginary Healthy Patient - 4&nbsp; Descriptive Statistics</title>
+<title>4&nbsp; Descriptive Statistics – The Imaginary Healthy Patient</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -76,11 +76,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 	});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -157,38 +157,49 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">The Imaginary Healthy Patient</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/3wen/imaginary-healthy"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-load_data.html">I Data</a></li><li class="breadcrumb-item"><a href="./data-descriptive_statistics.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">The Imaginary Healthy Patient</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -199,9 +210,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">I Data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -234,9 +245,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">II Classifiers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -257,9 +268,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">III SHAP</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -280,9 +291,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">IV Robustness Checks: MHI-3</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -327,9 +338,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">V Robustness Checks: SAH</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -466,7 +477,7 @@ Objectives
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../data/df_clean.rda"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5293   81</code></pre>
+<pre><code>[1] 5293   94</code></pre>
 </div>
 </div>
 <p>Let us add a variable in <code>df</code> stating whether or not the observation is included in the final sample:</p>
@@ -555,7 +566,7 @@ FALSE  TRUE
 (`stat_density()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-mhi-density" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-mhi-density" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-mhi-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.1: Density of MHI-5 and MHI-3 scores
@@ -585,7 +596,7 @@ Figure&nbsp;4.1: Density of MHI-5 and MHI-3 scores
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>score, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-mhi-scores-density-sample-used" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-mhi-scores-density-sample-used" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-mhi-scores-density-sample-used-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.2: Density of MHI-5 and MHI-3 scores
@@ -707,7 +718,7 @@ No depression    Depression     No answer
 (`stat_density()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-mhi5-scores-entire" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-mhi5-scores-entire" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-mhi5-scores-entire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.3: Density of MHI-5 scores
@@ -741,7 +752,7 @@ Figure&nbsp;4.3: Density of MHI-5 scores
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>      df<span class="sc">$</span>PERSONNE_score_t_corrected, <span class="at">probs =</span> .<span class="dv">25</span>, </span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"#0081BC"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"#0081BC"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="dv">2</span></span>
 <span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Mental Health Inventory score (MHI-5)"</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
 <span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
@@ -753,18 +764,11 @@ Figure&nbsp;4.3: Density of MHI-5 scores
 <span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_discrete</span>(<span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
-<details class="code-fold">
-<summary>Show the codes to create the graph</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r fold-hide code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>p_distrib_mhi_5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>p_distrib_mhi_5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-mhi5-scores-sample" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-mhi5-scores-sample" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-mhi5-scores-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.4: Density of MHI-5 scores
@@ -781,9 +785,9 @@ Figure&nbsp;4.4: Density of MHI-5 scores
 </div>
 <p>Recall that we used the first quartile as the threshold for the classification of individuals as either “low” MHI score or “high” MHI score. The first quantile is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>quant <span class="ot">&lt;-</span> .<span class="dv">25</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>q1_mhi_5 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df<span class="sc">$</span>PERSONNE_score_t_corrected, <span class="at">probs =</span> quant, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>q1_mhi_5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>quant <span class="ot">&lt;-</span> .<span class="dv">25</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>q1_mhi_5 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df<span class="sc">$</span>PERSONNE_score_t_corrected, <span class="at">probs =</span> quant, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>q1_mhi_5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>25% 
  60 </code></pre>
@@ -795,28 +799,28 @@ Figure&nbsp;4.4: Density of MHI-5 scores
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r fold-hide code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tableau_size <span class="ot">&lt;-</span> </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_age <span class="sc">&gt;=</span> <span class="dv">15</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PERSONNE_score_t_corrected)) <span class="sc">|&gt;</span> </span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">!=</span> <span class="st">"No answer"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">PERSONNE_pb_depress =</span> <span class="fu">factor</span>(</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"No depression"</span>)</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inf_q1 =</span> PERSONNE_score_t_corrected <span class="sc">&lt;=</span> q1_mhi_5) <span class="sc">|&gt;</span> </span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">inf_q1 =</span> <span class="fu">factor</span>(inf_q1, <span class="at">levels =</span> <span class="fu">c</span>(T,F), </span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"MHI-5 &lt;= Q1"</span>, <span class="st">"MHI-5 &gt; Q1"</span>)</span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>tableau_size_2 <span class="ot">&lt;-</span> <span class="fu">table</span>(tableau_size<span class="sc">$</span>inf_q1, tableau_size<span class="sc">$</span>PERSONNE_pb_depress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r fold-hide code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tableau_size <span class="ot">&lt;-</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_age <span class="sc">&gt;=</span> <span class="dv">15</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PERSONNE_score_t_corrected)) <span class="sc">|&gt;</span> </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">!=</span> <span class="st">"No answer"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">PERSONNE_pb_depress =</span> <span class="fu">factor</span>(</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"No depression"</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inf_q1 =</span> PERSONNE_score_t_corrected <span class="sc">&lt;=</span> q1_mhi_5) <span class="sc">|&gt;</span> </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">inf_q1 =</span> <span class="fu">factor</span>(inf_q1, <span class="at">levels =</span> <span class="fu">c</span>(T,F), </span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"MHI-5 &lt;= Q1"</span>, <span class="st">"MHI-5 &gt; Q1"</span>)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>tableau_size_2 <span class="ot">&lt;-</span> <span class="fu">table</span>(tableau_size<span class="sc">$</span>inf_q1, tableau_size<span class="sc">$</span>PERSONNE_pb_depress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(tableau_size_2_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(tableau_size_2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(tableau_size_2_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(tableau_size_2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             
               Depression No depression   Sum
@@ -824,7 +828,7 @@ Figure&nbsp;4.4: Density of MHI-5 scores
   MHI-5 &gt; Q1         101          8006  8107
   Sum                673         11199 11872</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tableau_size_2)<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tableau_size_2)<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             
               Depression No depression
@@ -835,30 +839,30 @@ Figure&nbsp;4.4: Density of MHI-5 scores
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r fold-hide code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>tableau_size_sample <span class="ot">&lt;-</span> </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(in_sample) <span class="sc">|&gt;</span> </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PERSONNE_score_t_corrected)) <span class="sc">|&gt;</span> </span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">!=</span> <span class="st">"No answer"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">PERSONNE_pb_depress =</span> <span class="fu">factor</span>(</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress, </span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"No depression"</span>)</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inf_q1 =</span> PERSONNE_score_t_corrected <span class="sc">&lt;=</span> q1_mhi_5) <span class="sc">|&gt;</span> </span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">inf_q1 =</span> <span class="fu">factor</span>(</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>      inf_q1, <span class="at">levels =</span> <span class="fu">c</span>(T,F), </span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"MHI-5 &lt;= Q1"</span>, <span class="st">"MHI-5 &gt; Q1"</span>)</span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">|&gt;</span> </span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>tableau_size_sample_2 <span class="ot">&lt;-</span> <span class="fu">table</span>(tableau_size_sample<span class="sc">$</span>inf_q1, tableau_size_sample<span class="sc">$</span>PERSONNE_pb_depress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r fold-hide code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tableau_size_sample <span class="ot">&lt;-</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(in_sample) <span class="sc">|&gt;</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PERSONNE_score_t_corrected)) <span class="sc">|&gt;</span> </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">!=</span> <span class="st">"No answer"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">PERSONNE_pb_depress =</span> <span class="fu">factor</span>(</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>      PERSONNE_pb_depress, </span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Depression"</span>, <span class="st">"No depression"</span>)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inf_q1 =</span> PERSONNE_score_t_corrected <span class="sc">&lt;=</span> q1_mhi_5) <span class="sc">|&gt;</span> </span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">inf_q1 =</span> <span class="fu">factor</span>(</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>      inf_q1, <span class="at">levels =</span> <span class="fu">c</span>(T,F), </span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"MHI-5 &lt;= Q1"</span>, <span class="st">"MHI-5 &gt; Q1"</span>)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">|&gt;</span> </span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>tableau_size_sample_2 <span class="ot">&lt;-</span> <span class="fu">table</span>(tableau_size_sample<span class="sc">$</span>inf_q1, tableau_size_sample<span class="sc">$</span>PERSONNE_pb_depress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(tableau_size_sample_2_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(tableau_size_sample_2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(tableau_size_sample_2_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(tableau_size_sample_2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             
               Depression No depression  Sum
@@ -866,7 +870,7 @@ Figure&nbsp;4.4: Density of MHI-5 scores
   MHI-5 &gt; Q1           0          3696 3696
   Sum                  0          5293 5293</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tableau_size_sample_2)<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tableau_size_sample_2)<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             
               Depression No depression
@@ -879,67 +883,73 @@ Figure&nbsp;4.4: Density of MHI-5 scores
 </div>
 <p>In the study, we decided to use the first quartile of the distribution of MHI-5 scores to classify individuals as depressed (when their MHI-5 score is less than or equal to the first quartile of the distribution) or non-depressed (when their MHI-5 score is greater than the first quartile of the distribution). It is possible to illustrates the impact of this choice on the proportion of individuals designated as depressed with respect to the MHI-5 score. To that end, we can first create a function that computes the proportion of people classified as depressive depending on the selected threshold.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>get_prop <span class="ot">&lt;-</span> <span class="cf">function</span>(prob, df) {</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  q1_mhi_5 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df<span class="sc">$</span>PERSONNE_score_t_corrected, <span class="at">probs =</span> prob, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  tableau <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PERSONNE_score_t_corrected)) <span class="sc">|&gt;</span> </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">!=</span> <span class="st">"No answer"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">inf_q1 =</span> PERSONNE_score_t_corrected <span class="sc">&lt;=</span> q1_mhi_5) <span class="sc">|&gt;</span> </span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(PERSONNE_pb_depress) <span class="sc">|&gt;</span> </span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">inf_q1 =</span> <span class="fu">sum</span>(inf_q1),</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">sup_q1 =</span> <span class="fu">n</span>() <span class="sc">-</span> inf_q1,</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">tot =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">inf_q1_prop =</span> inf_q1 <span class="sc">/</span> (inf_q1 <span class="sc">+</span> sup_q1),</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">inf_q1_prop =</span> <span class="fu">round</span>(inf_q1_prop<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>))</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  nb_inf_q1 <span class="ot">&lt;-</span> tableau <span class="sc">|&gt;</span> <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"No depression"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(inf_q1)</span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  nb_sup_q1 <span class="ot">&lt;-</span> tableau <span class="sc">|&gt;</span> <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"No depression"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(sup_q1)</span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>  nb_obs_depression <span class="ot">&lt;-</span> tableau <span class="sc">|&gt;</span> </span>
-<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"No depression"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(tot)</span>
-<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">prob =</span> prob, </span>
-<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">cutoff =</span> q1_mhi_5, </span>
-<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_no_depression_inf =</span> nb_inf_q1 <span class="sc">/</span> nb_obs_depression</span>
-<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>get_prop <span class="ot">&lt;-</span> <span class="cf">function</span>(prob, df) {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  q1_mhi_5 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df<span class="sc">$</span>PERSONNE_score_t_corrected, <span class="at">probs =</span> prob, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  tableau <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PERSONNE_score_t_corrected)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">!=</span> <span class="st">"No answer"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">inf_q1 =</span> PERSONNE_score_t_corrected <span class="sc">&lt;=</span> q1_mhi_5) <span class="sc">|&gt;</span> </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(PERSONNE_pb_depress) <span class="sc">|&gt;</span> </span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">inf_q1 =</span> <span class="fu">sum</span>(inf_q1),</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">sup_q1 =</span> <span class="fu">n</span>() <span class="sc">-</span> inf_q1,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">tot =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">inf_q1_prop =</span> inf_q1 <span class="sc">/</span> (inf_q1 <span class="sc">+</span> sup_q1),</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">inf_q1_prop =</span> <span class="fu">round</span>(inf_q1_prop<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>))</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  nb_inf_q1 <span class="ot">&lt;-</span> tableau <span class="sc">|&gt;</span> <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"No depression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(inf_q1)</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  nb_sup_q1 <span class="ot">&lt;-</span> tableau <span class="sc">|&gt;</span> <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"No depression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(sup_q1)</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>  nb_obs_depression <span class="ot">&lt;-</span> tableau <span class="sc">|&gt;</span> </span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(PERSONNE_pb_depress <span class="sc">==</span> <span class="st">"No depression"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(tot)</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">prob =</span> prob, </span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">cutoff =</span> q1_mhi_5, </span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_no_depression_inf =</span> nb_inf_q1 <span class="sc">/</span> nb_obs_depression</span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function can be applied to a sequence of thresholds, ranging from 0 to 1:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>prop_no_depression_inf <span class="ot">&lt;-</span> </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">05</span>), <span class="at">.f =</span> get_prop, <span class="at">df =</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>prop_no_depression_inf <span class="ot">&lt;-</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="at">.x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">05</span>), <span class="at">.f =</span> get_prop, <span class="at">df =</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can plot the proportion of people classified as drepressive as a function of the threshold used on the MHI-5 score. We have added a vertical blue dashed line to show the threshold used, <em>i.e.</em>, the first quartile of the MHI-5 score distribution.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the codes to create the graph</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>p_imaginary_healtyh <span class="ot">&lt;-</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> prop_no_depression_inf, </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cutoff, <span class="at">y =</span> prop_no_depression_inf)</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">xintercept =</span> q1_mhi_5, <span class="at">colour =</span> <span class="st">"#0081BC"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"MHI-5 score"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">""</span></span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="fu">rel</span>(<span class="fl">1.3</span>), <span class="at">face =</span> <span class="st">"bold"</span>))</span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>p_imaginary_healtyh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>p_imaginary_healtyh <span class="ot">&lt;-</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> prop_no_depression_inf, </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cutoff, <span class="at">y =</span> prop_no_depression_inf)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">xintercept =</span> q1_mhi_5, <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"MHI-5 score"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">""</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="fu">rel</span>(<span class="fl">1.3</span>), <span class="at">face =</span> <span class="st">"bold"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<details class="code-fold">
+<summary>Show the codes to create the graph</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>p_imaginary_healtyh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-imaginaryhealtyh-mhi" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-imaginaryhealtyh-mhi" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-imaginaryhealtyh-mhi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.5: Proportion of individuals classified as depressive depending on MHI-5 score
@@ -993,7 +1003,7 @@ Figure&nbsp;4.5: Proportion of individuals classified as depressive depending on
 <span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a>p_distrib_ages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-density-age" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-density-age" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-density-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.6: Density of age of individuals in each category
@@ -1045,7 +1055,7 @@ Figure&nbsp;4.6: Density of age of individuals in each category
 <span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>p_distrib_ages_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-density-age-sample" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-density-age-sample" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-density-age-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.7: Density of age of individuals in each category
@@ -1348,7 +1358,7 @@ Joining with `by = join_by(label, PERSONNE_sexe)`</code></pre>
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Entire Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Sample Used</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<div id="tbl-indiv-entire" class="cell quarto-float anchored">
+<div id="tbl-indiv-entire" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-indiv-entire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.1: Personnal characteristics
@@ -1383,6 +1393,435 @@ p_value
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Asthma (n = 11,199) No
+</td>
+<td style="text-align:left;">
+10465 (93.45%)
+</td>
+<td style="text-align:left;">
+2897 (90.73%)
+</td>
+<td style="text-align:left;">
+7568 (94.53%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Asthma Yes
+</td>
+<td style="text-align:left;">
+734 (6.55%)
+</td>
+<td style="text-align:left;">
+296 (9.27%)
+</td>
+<td style="text-align:left;">
+438 (5.47%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bronchitis (n = 11,199) No
+</td>
+<td style="text-align:left;">
+10636 (94.97%)
+</td>
+<td style="text-align:left;">
+2912 (91.2%)
+</td>
+<td style="text-align:left;">
+7724 (96.48%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bronchitis Yes
+</td>
+<td style="text-align:left;">
+563 (5.03%)
+</td>
+<td style="text-align:left;">
+281 (8.8%)
+</td>
+<td style="text-align:left;">
+282 (3.52%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Heart Attack (n = 11,199) No
+</td>
+<td style="text-align:left;">
+11140 (99.47%)
+</td>
+<td style="text-align:left;">
+3161 (99%)
+</td>
+<td style="text-align:left;">
+7979 (99.66%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Heart Attack Yes
+</td>
+<td style="text-align:left;">
+59 (0.53%)
+</td>
+<td style="text-align:left;">
+32 (1%)
+</td>
+<td style="text-align:left;">
+27 (0.34%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Artery Disease (n = 11,199) No
+</td>
+<td style="text-align:left;">
+11024 (98.44%)
+</td>
+<td style="text-align:left;">
+3113 (97.49%)
+</td>
+<td style="text-align:left;">
+7911 (98.81%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Artery Disease Yes
+</td>
+<td style="text-align:left;">
+175 (1.56%)
+</td>
+<td style="text-align:left;">
+80 (2.51%)
+</td>
+<td style="text-align:left;">
+95 (1.19%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hypertension (n = 11,199) No
+</td>
+<td style="text-align:left;">
+9940 (88.76%)
+</td>
+<td style="text-align:left;">
+2718 (85.12%)
+</td>
+<td style="text-align:left;">
+7222 (90.21%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hypertension Yes
+</td>
+<td style="text-align:left;">
+1259 (11.24%)
+</td>
+<td style="text-align:left;">
+475 (14.88%)
+</td>
+<td style="text-align:left;">
+784 (9.79%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stroke (n = 11,199) No
+</td>
+<td style="text-align:left;">
+11133 (99.41%)
+</td>
+<td style="text-align:left;">
+3159 (98.94%)
+</td>
+<td style="text-align:left;">
+7974 (99.6%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stroke Yes
+</td>
+<td style="text-align:left;">
+66 (0.59%)
+</td>
+<td style="text-align:left;">
+34 (1.06%)
+</td>
+<td style="text-align:left;">
+32 (0.4%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Osteoarthritis (n = 11,199) No
+</td>
+<td style="text-align:left;">
+9896 (88.37%)
+</td>
+<td style="text-align:left;">
+2642 (82.74%)
+</td>
+<td style="text-align:left;">
+7254 (90.61%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Osteoarthritis Yes
+</td>
+<td style="text-align:left;">
+1303 (11.63%)
+</td>
+<td style="text-align:left;">
+551 (17.26%)
+</td>
+<td style="text-align:left;">
+752 (9.39%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Low Back Pain (n = 11,199) No
+</td>
+<td style="text-align:left;">
+9161 (81.8%)
+</td>
+<td style="text-align:left;">
+2365 (74.07%)
+</td>
+<td style="text-align:left;">
+6796 (84.89%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Low Back Pain Yes
+</td>
+<td style="text-align:left;">
+2038 (18.2%)
+</td>
+<td style="text-align:left;">
+828 (25.93%)
+</td>
+<td style="text-align:left;">
+1210 (15.11%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neck Pain (n = 11,199) No
+</td>
+<td style="text-align:left;">
+9753 (87.09%)
+</td>
+<td style="text-align:left;">
+2527 (79.14%)
+</td>
+<td style="text-align:left;">
+7226 (90.26%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neck Pain Yes
+</td>
+<td style="text-align:left;">
+1446 (12.91%)
+</td>
+<td style="text-align:left;">
+666 (20.86%)
+</td>
+<td style="text-align:left;">
+780 (9.74%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Diabetes (n = 11,199) No
+</td>
+<td style="text-align:left;">
+10339 (92.32%)
+</td>
+<td style="text-align:left;">
+2831 (88.66%)
+</td>
+<td style="text-align:left;">
+7508 (93.78%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Diabetes Yes
+</td>
+<td style="text-align:left;">
+860 (7.68%)
+</td>
+<td style="text-align:left;">
+362 (11.34%)
+</td>
+<td style="text-align:left;">
+498 (6.22%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Allergy (n = 11,199) No
+</td>
+<td style="text-align:left;">
+9665 (86.3%)
+</td>
+<td style="text-align:left;">
+2626 (82.24%)
+</td>
+<td style="text-align:left;">
+7039 (87.92%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Allergy Yes
+</td>
+<td style="text-align:left;">
+1534 (13.7%)
+</td>
+<td style="text-align:left;">
+567 (17.76%)
+</td>
+<td style="text-align:left;">
+967 (12.08%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cirrhosis (n = 11,199) No
+</td>
+<td style="text-align:left;">
+11189 (99.91%)
+</td>
+<td style="text-align:left;">
+3188 (99.84%)
+</td>
+<td style="text-align:left;">
+8001 (99.94%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cirrhosis Yes
+</td>
+<td style="text-align:left;">
+10 (0.09%)
+</td>
+<td style="text-align:left;">
+5 (0.16%)
+</td>
+<td style="text-align:left;">
+5 (0.06%)
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(0.248\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Urinary Incontinence (n = 11,199) No
+</td>
+<td style="text-align:left;">
+10800 (96.44%)
+</td>
+<td style="text-align:left;">
+2978 (93.27%)
+</td>
+<td style="text-align:left;">
+7822 (97.7%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Urinary Incontinence Yes
+</td>
+<td style="text-align:left;">
+399 (3.56%)
+</td>
+<td style="text-align:left;">
+215 (6.73%)
+</td>
+<td style="text-align:left;">
+184 (2.3%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 MHI-5 Score (n = 11,199)
@@ -2089,7 +2528,7 @@ Long-term condition (Self-declared) Does not know
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<div id="tbl-indiv-sample" class="cell quarto-float anchored">
+<div id="tbl-indiv-sample" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-indiv-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.2: Personnal characteristics
@@ -2125,6 +2564,435 @@ p_value
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Asthma (n = 5,293) No
+</td>
+<td style="text-align:left;">
+4934 (93.22%)
+</td>
+<td style="text-align:left;">
+1432 (89.67%)
+</td>
+<td style="text-align:left;">
+3502 (94.75%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Asthma Yes
+</td>
+<td style="text-align:left;">
+359 (6.78%)
+</td>
+<td style="text-align:left;">
+165 (10.33%)
+</td>
+<td style="text-align:left;">
+194 (5.25%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bronchitis (n = 5,293) No
+</td>
+<td style="text-align:left;">
+4987 (94.22%)
+</td>
+<td style="text-align:left;">
+1438 (90.04%)
+</td>
+<td style="text-align:left;">
+3549 (96.02%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bronchitis Yes
+</td>
+<td style="text-align:left;">
+306 (5.78%)
+</td>
+<td style="text-align:left;">
+159 (9.96%)
+</td>
+<td style="text-align:left;">
+147 (3.98%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Heart Attack (n = 5,293) No
+</td>
+<td style="text-align:left;">
+5259 (99.36%)
+</td>
+<td style="text-align:left;">
+1578 (98.81%)
+</td>
+<td style="text-align:left;">
+3681 (99.59%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Heart Attack Yes
+</td>
+<td style="text-align:left;">
+34 (0.64%)
+</td>
+<td style="text-align:left;">
+19 (1.19%)
+</td>
+<td style="text-align:left;">
+15 (0.41%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(0.002\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Artery Disease (n = 5,293) No
+</td>
+<td style="text-align:left;">
+5190 (98.05%)
+</td>
+<td style="text-align:left;">
+1548 (96.93%)
+</td>
+<td style="text-align:left;">
+3642 (98.54%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Artery Disease Yes
+</td>
+<td style="text-align:left;">
+103 (1.95%)
+</td>
+<td style="text-align:left;">
+49 (3.07%)
+</td>
+<td style="text-align:left;">
+54 (1.46%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hypertension (n = 5,293) No
+</td>
+<td style="text-align:left;">
+4662 (88.08%)
+</td>
+<td style="text-align:left;">
+1343 (84.1%)
+</td>
+<td style="text-align:left;">
+3319 (89.8%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hypertension Yes
+</td>
+<td style="text-align:left;">
+631 (11.92%)
+</td>
+<td style="text-align:left;">
+254 (15.9%)
+</td>
+<td style="text-align:left;">
+377 (10.2%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stroke (n = 5,293) No
+</td>
+<td style="text-align:left;">
+5265 (99.47%)
+</td>
+<td style="text-align:left;">
+1583 (99.12%)
+</td>
+<td style="text-align:left;">
+3682 (99.62%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stroke Yes
+</td>
+<td style="text-align:left;">
+28 (0.53%)
+</td>
+<td style="text-align:left;">
+14 (0.88%)
+</td>
+<td style="text-align:left;">
+14 (0.38%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(0.037\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Osteoarthritis (n = 5,293) No
+</td>
+<td style="text-align:left;">
+4586 (86.64%)
+</td>
+<td style="text-align:left;">
+1299 (81.34%)
+</td>
+<td style="text-align:left;">
+3287 (88.93%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Osteoarthritis Yes
+</td>
+<td style="text-align:left;">
+707 (13.36%)
+</td>
+<td style="text-align:left;">
+298 (18.66%)
+</td>
+<td style="text-align:left;">
+409 (11.07%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Low Back Pain (n = 5,293) No
+</td>
+<td style="text-align:left;">
+4215 (79.63%)
+</td>
+<td style="text-align:left;">
+1139 (71.32%)
+</td>
+<td style="text-align:left;">
+3076 (83.23%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Low Back Pain Yes
+</td>
+<td style="text-align:left;">
+1078 (20.37%)
+</td>
+<td style="text-align:left;">
+458 (28.68%)
+</td>
+<td style="text-align:left;">
+620 (16.77%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neck Pain (n = 5,293) No
+</td>
+<td style="text-align:left;">
+4519 (85.38%)
+</td>
+<td style="text-align:left;">
+1244 (77.9%)
+</td>
+<td style="text-align:left;">
+3275 (88.61%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neck Pain Yes
+</td>
+<td style="text-align:left;">
+774 (14.62%)
+</td>
+<td style="text-align:left;">
+353 (22.1%)
+</td>
+<td style="text-align:left;">
+421 (11.39%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Diabetes (n = 5,293) No
+</td>
+<td style="text-align:left;">
+4848 (91.59%)
+</td>
+<td style="text-align:left;">
+1374 (86.04%)
+</td>
+<td style="text-align:left;">
+3474 (93.99%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Diabetes Yes
+</td>
+<td style="text-align:left;">
+445 (8.41%)
+</td>
+<td style="text-align:left;">
+223 (13.96%)
+</td>
+<td style="text-align:left;">
+222 (6.01%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Allergy (n = 5,293) No
+</td>
+<td style="text-align:left;">
+4520 (85.4%)
+</td>
+<td style="text-align:left;">
+1284 (80.4%)
+</td>
+<td style="text-align:left;">
+3236 (87.55%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Allergy Yes
+</td>
+<td style="text-align:left;">
+773 (14.6%)
+</td>
+<td style="text-align:left;">
+313 (19.6%)
+</td>
+<td style="text-align:left;">
+460 (12.45%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cirrhosis (n = 5,293) No
+</td>
+<td style="text-align:left;">
+5286 (99.87%)
+</td>
+<td style="text-align:left;">
+1593 (99.75%)
+</td>
+<td style="text-align:left;">
+3693 (99.92%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cirrhosis Yes
+</td>
+<td style="text-align:left;">
+7 (0.13%)
+</td>
+<td style="text-align:left;">
+4 (0.25%)
+</td>
+<td style="text-align:left;">
+3 (0.08%)
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(0.253\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Urinary Incontinence (n = 5,293) No
+</td>
+<td style="text-align:left;">
+5071 (95.81%)
+</td>
+<td style="text-align:left;">
+1480 (92.67%)
+</td>
+<td style="text-align:left;">
+3591 (97.16%)
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Urinary Incontinence Yes
+</td>
+<td style="text-align:left;">
+222 (4.19%)
+</td>
+<td style="text-align:left;">
+117 (7.33%)
+</td>
+<td style="text-align:left;">
+105 (2.84%)
+</td>
+<td style="text-align:left;">
+<strong><span class="math inline">\(&lt; 10^{-3}\)</span></strong>
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 MHI-5 Score (n = 5,293)
@@ -2822,7 +3690,7 @@ Long-term condition (Self-declared) Does not know
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Entire Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Sample Used</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
-<div id="tbl-hh-entire" class="cell quarto-float anchored">
+<div id="tbl-hh-entire" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hh-entire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.3: Household characteristics
@@ -3432,7 +4300,7 @@ Sunlight (n = 11,199)
 </div>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
-<div id="tbl-hh-sample" class="cell quarto-float anchored">
+<div id="tbl-hh-sample" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hh-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.4: Household characteristics
@@ -4049,7 +4917,7 @@ Sunlight (n = 5,293)
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Entire Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Sample Used</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
-<div id="tbl-healthcare-entire" class="cell quarto-float anchored">
+<div id="tbl-healthcare-entire" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-healthcare-entire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.5: Healthcare expenditures
@@ -5143,7 +6011,7 @@ No.&nbsp;Medical Sessions Specialist (n = 6,111)
 </div>
 </div>
 <div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
-<div id="tbl-healthcare-sample" class="cell quarto-float anchored">
+<div id="tbl-healthcare-sample" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-healthcare-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.6: Healthcare expenditures
@@ -6228,7 +7096,7 @@ No.&nbsp;Medical Sessions Specialist (n = 5,293)
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Entire Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Sample Used</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
-<div id="tbl-working-entire" class="cell quarto-float anchored">
+<div id="tbl-working-entire" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-working-entire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.7: Working conditions
@@ -7015,7 +7883,7 @@ Exposed to Harmful/Toxic Products/Substances No answer
 </div>
 </div>
 <div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
-<div id="tbl-working-sample" class="cell quarto-float anchored">
+<div id="tbl-working-sample" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-working-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.8: Working conditions
@@ -7809,7 +8677,7 @@ Exposed to Harmful/Toxic Products/Substances No answer
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Entire Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Sample Used</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
-<div id="tbl-social-entire" class="cell quarto-float anchored">
+<div id="tbl-social-entire" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-social-entire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.9: Economic and social situation
@@ -8546,7 +9414,7 @@ Father’s Level of Education No answer
 </div>
 </div>
 <div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
-<div id="tbl-social-sample" class="cell quarto-float anchored">
+<div id="tbl-social-sample" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-social-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.10: Economic and social situation
@@ -9290,7 +10158,7 @@ Father’s Level of Education No answer
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Entire Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Sample Used</a></li></ul>
 <div class="tab-content">
 <div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
-<div id="tbl-opinion-entire" class="cell quarto-float anchored">
+<div id="tbl-opinion-entire" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-opinion-entire-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.11: Opinion
@@ -9577,7 +10445,7 @@ Waiver Appointment Delay Too Long No answer
 </div>
 </div>
 <div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
-<div id="tbl-opinion-sample" class="cell quarto-float anchored">
+<div id="tbl-opinion-sample" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-opinion-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4.12: Opinion
@@ -9909,18 +10777,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -9952,7 +10809,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -9960,7 +10839,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

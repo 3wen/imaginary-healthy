@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Imaginary Healthy Patient - 15&nbsp; Data Cleaning</title>
+<title>15&nbsp; Data Cleaning – The Imaginary Healthy Patient</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -76,11 +76,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -130,38 +130,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">The Imaginary Healthy Patient</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/3wen/imaginary-healthy"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./robustness-data-cleaning-sah.html">V Robustness Checks: SAH</a></li><li class="breadcrumb-item"><a href="./robustness-data-cleaning-sah.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data Cleaning</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">The Imaginary Healthy Patient</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -172,9 +183,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">I Data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -207,9 +218,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">II Classifiers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -230,9 +241,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">III SHAP</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -253,9 +264,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">IV Robustness Checks: MHI-3</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -300,9 +311,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">V Robustness Checks: SAH</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -445,152 +456,166 @@ Objectives
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>variable_names <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>variable, <span class="sc">~</span>label, <span class="sc">~</span>type,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_depress"</span>, <span class="st">"Depression"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_score_t_corrected"</span>, <span class="st">"MHI-5 Score"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_etat_sante"</span>, <span class="st">"Self-Assessed Health Condition"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_age"</span>, <span class="st">"Age"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_sexe"</span>, <span class="st">"Gender"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_couple"</span>, <span class="st">"Couple"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_etatleg"</span>, <span class="st">"Marital Status"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_statut"</span>, <span class="st">"Professional Status"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_ss"</span>, <span class="st">"Social Security"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_regime"</span>, <span class="st">"Social Security System"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_rap_pcs8"</span>, <span class="st">"Occupation"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_ald"</span>, <span class="st">"Long-term condition (Self-declared)"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_ald_am"</span>, <span class="st">"Long-term condition (SNIIRAM)"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Household</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_rap_zau"</span>, <span class="st">"Zoning in Urban Areas"</span>, <span class="st">"ordinal"</span>,</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_region"</span>, <span class="st">"Region"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_revdetail"</span>, <span class="st">"Income"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_revucinsee"</span>, <span class="st">"Net Income per Cons. Unit"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_tu"</span>,<span class="st">"Size Urban Area"</span>, <span class="st">"ordinal"</span>, </span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_nbpers"</span>, <span class="st">"Household size"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ensol_2011"</span>, <span class="st">"Sunlight"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "MENAGE_revenu", "Income (class)", "ordinal", </span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "MENAGE_typmen", "Household Type", "qualitative", </span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "CODE_REG", "Region Code", "qualitative",</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_asthm"</span>, <span class="st">"Asthma"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_bronchit"</span>, <span class="st">"Bronchitis"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_infarctus"</span>, <span class="st">"Heart Attack"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_coronair"</span>, <span class="st">"Artery Disease"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_hypertens"</span>, <span class="st">"Hypertension"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_avc"</span>, <span class="st">"Stroke"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_arthros"</span>, <span class="st">"Osteoarthritis"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_lombalgi"</span>, <span class="st">"Low Back Pain"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_cervical"</span>, <span class="st">"Neck Pain"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_diabet"</span>, <span class="st">"Diabetes"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_allergi"</span>, <span class="st">"Allergy"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_cirrhos"</span>, <span class="st">"Cirrhosis"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_pb_urinair"</span>, <span class="st">"Urinary Incontinence"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "PERSONNE_pb_non", "No Illness", "qualitative",</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_score_t_corrected"</span>, <span class="st">"MHI-5 Score"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_etat_sante"</span>, <span class="st">"Self-Assessed Health Condition"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_age"</span>, <span class="st">"Age"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_sexe"</span>, <span class="st">"Gender"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_couple"</span>, <span class="st">"Couple"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_etatleg"</span>, <span class="st">"Marital Status"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_statut"</span>, <span class="st">"Professional Status"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_ss"</span>, <span class="st">"Social Security"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_regime"</span>, <span class="st">"Social Security System"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_rap_pcs8"</span>, <span class="st">"Occupation"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PERSONNE_ald"</span>, <span class="st">"Long-term condition (Self-declared)"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_ald_am"</span>, <span class="st">"Long-term condition (SNIIRAM)"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mutual Insurance</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Household</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
 <span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MUTUELLE_assu"</span>, <span class="st">"Insurance"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MUTUELLE_typcc"</span>, <span class="st">"Mutual Coverage Type"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Expenses</span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Outpatient ~= Sum of the others</span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depamb"</span>, <span class="st">"Exp. Outpatient"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depomn"</span>, <span class="st">"Exp. General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depspe"</span>, <span class="st">"Exp. Specialist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deppha"</span>, <span class="st">"Exp. Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depkin"</span>, <span class="st">"Exp. Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depinf"</span>, <span class="st">"Exp. Nurse"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depden"</span>, <span class="st">"Exp. Dentist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depmat"</span>, <span class="st">"Exp. Equipment"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deptra"</span>, <span class="st">"Exp. Transport"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depopt"</span>, <span class="st">"Exp. Optical"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deppro"</span>, <span class="st">"Exp. Prostheses"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depurg"</span>, <span class="st">"Exp. Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_rap_zau"</span>, <span class="st">"Zoning in Urban Areas"</span>, <span class="st">"ordinal"</span>,</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_region"</span>, <span class="st">"Region"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_revdetail"</span>, <span class="st">"Income"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_revucinsee"</span>, <span class="st">"Net Income per Cons. Unit"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_tu"</span>,<span class="st">"Size Urban Area"</span>, <span class="st">"ordinal"</span>, </span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MENAGE_nbpers"</span>, <span class="st">"Household size"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ensol_2011"</span>, <span class="st">"Sunlight"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "MENAGE_revenu", "Income (class)", "ordinal", </span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "MENAGE_typmen", "Household Type", "qualitative", </span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "CODE_REG", "Region Code", "qualitative",</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mutual Insurance</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MUTUELLE_assu"</span>, <span class="st">"Insurance"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MUTUELLE_typcc"</span>, <span class="st">"Mutual Coverage Type"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Expenses</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Outpatient ~= Sum of the others</span></span>
 <span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reimbursement</span></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remamb"</span>, <span class="st">"Reimbursement Outpatient"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remomn"</span>, <span class="st">"Reimbursement General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remspe"</span>, <span class="st">"Reimbursement Specialist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_rempha"</span>, <span class="st">"Reimbursement Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remkin"</span>, <span class="st">"Reimbursement Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_reminf"</span>, <span class="st">"Reimbursement Nurse"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remden"</span>, <span class="st">"Reimbursement Dentist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remmat"</span>, <span class="st">"Reimbursement Equipment"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remtra"</span>, <span class="st">"Reimbursement Transport"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remopt"</span>, <span class="st">"Reimbursement Optical"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_rempro"</span>, <span class="st">"Reimbursement Prostheses"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remurg"</span>, <span class="st">"Reimbursement Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depamb"</span>, <span class="st">"Exp. Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depomn"</span>, <span class="st">"Exp. General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depspe"</span>, <span class="st">"Exp. Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deppha"</span>, <span class="st">"Exp. Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depkin"</span>, <span class="st">"Exp. Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depinf"</span>, <span class="st">"Exp. Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depden"</span>, <span class="st">"Exp. Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depmat"</span>, <span class="st">"Exp. Equipment"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deptra"</span>, <span class="st">"Exp. Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depopt"</span>, <span class="st">"Exp. Optical"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_deppro"</span>, <span class="st">"Exp. Prostheses"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_depurg"</span>, <span class="st">"Exp. Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reimbursement</span></span>
 <span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Co-payment (Ticket moderateur)</span></span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmamb"</span>, <span class="st">"Co-payment Outpatient"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmomn"</span>, <span class="st">"Co-payment General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmspe"</span>, <span class="st">"Co-payment Specialist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmpha"</span>, <span class="st">"Co-payment Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmkin"</span>, <span class="st">"Co-payment Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tminf"</span>, <span class="st">"Co-payment Nurse"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmden"</span>, <span class="st">"Co-payment Dentist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmmat"</span>, <span class="st">"Co-payment Equipment"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmtra"</span>, <span class="st">"Co-payment Transport"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmopt"</span>, <span class="st">"Co-payment Optical"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmpro"</span>, <span class="st">"Co-payment Prostheses"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmurg"</span>, <span class="st">"Co-payment Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extra-fees</span></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaamb"</span>, <span class="st">"Extra-fees Outpatient"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaomn"</span>, <span class="st">"Extra-fees General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaspe"</span>, <span class="st">"Extra-fees Specialist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpapha"</span>, <span class="st">"Extra-fees Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpakin"</span>, <span class="st">"Extra-fees Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpainf"</span>, <span class="st">"Extra-fees Nurse"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaden"</span>, <span class="st">"Extra-fees Dentist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpamat"</span>, <span class="st">"Extra-fees Equipment"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpatra"</span>, <span class="st">"Extra-fees Transport"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaopt"</span>, <span class="st">"Extra-fees Optical"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpapro"</span>, <span class="st">"Extra-fees Prostheses"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaurg"</span>, <span class="st">"Extra-fees Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remamb"</span>, <span class="st">"Reimbursement Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remomn"</span>, <span class="st">"Reimbursement General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remspe"</span>, <span class="st">"Reimbursement Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_rempha"</span>, <span class="st">"Reimbursement Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remkin"</span>, <span class="st">"Reimbursement Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_reminf"</span>, <span class="st">"Reimbursement Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remden"</span>, <span class="st">"Reimbursement Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remmat"</span>, <span class="st">"Reimbursement Equipment"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remtra"</span>, <span class="st">"Reimbursement Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remopt"</span>, <span class="st">"Reimbursement Optical"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_rempro"</span>, <span class="st">"Reimbursement Prostheses"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_remurg"</span>, <span class="st">"Reimbursement Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Co-payment (Ticket moderateur)</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmamb"</span>, <span class="st">"Co-payment Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmomn"</span>, <span class="st">"Co-payment General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmspe"</span>, <span class="st">"Co-payment Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmpha"</span>, <span class="st">"Co-payment Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmkin"</span>, <span class="st">"Co-payment Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tminf"</span>, <span class="st">"Co-payment Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmden"</span>, <span class="st">"Co-payment Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmmat"</span>, <span class="st">"Co-payment Equipment"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmtra"</span>, <span class="st">"Co-payment Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmopt"</span>, <span class="st">"Co-payment Optical"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmpro"</span>, <span class="st">"Co-payment Prostheses"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_tmurg"</span>, <span class="st">"Co-payment Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extra-fees</span></span>
 <span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Deductible (Franchise)</span></span>
-<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_framb"</span>, <span class="st">"Deduct. Outpatient"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_fromn"</span>, <span class="st">"Deduct. General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frspe"</span>, <span class="st">"Deduct. Specialist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frpha"</span>, <span class="st">"Deduct. Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frkin"</span>, <span class="st">"Deduct. Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frinf"</span>, <span class="st">"Deduct. Nurse"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frden"</span>, <span class="st">"Deduct. Dentist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_frmat", "Deduct. Equipment", "numerical", # does not exist in the data</span></span>
-<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frtra"</span>, <span class="st">"Deduct. Transport"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_fropt", "Deduct. Optical", "numerical",</span></span>
-<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_frpro", "Deduct. Prostheses", "numerical",</span></span>
-<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frurg"</span>, <span class="st">"Deduct. Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_seac_omn"</span>, <span class="st">"No. Medical Sessions General Pract."</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_seac_spe"</span>,  <span class="st">"No. Medical Sessions Specialist"</span>, <span class="st">"numerical"</span>,</span>
-<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_cons"</span>, <span class="st">"Waiver General Practitioner"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_dent"</span>, <span class="st">"Waiver Dental Care"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_fin"</span>, <span class="st">"Waiver Other Health Care"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_loin"</span>, <span class="st">"Waiver Health Care Too Far"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_long"</span>, <span class="st">"Waiver Appointment Delay Too Long"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Working conditions</span></span>
-<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_depech"</span>, <span class="st">"Have to Hurry to Do Job"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_liberte"</span>, <span class="st">"Very Little Freedom to Do Job"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_apprend"</span>, <span class="st">"Job Allows to Learn New Things"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_aidecol"</span>, <span class="st">"Colleagues Help Carry out Tasks"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_travnuit"</span>, <span class="st">"Job Requires not to Sleep Betw. Midnight and 5 a.m."</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_repet"</span>, <span class="st">"Repetitive Work under Time Constraints / Line Job"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_lourd"</span>, <span class="st">"Exposed to Carrying Heavy Loads"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_posture"</span>, <span class="st">"Exposed to Painful Postures"</span>, <span class="st">"qualitative"</span>, </span>
-<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_produit"</span>, <span class="st">"Exposed to Harmful/Toxic Products/Substances"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_association"</span>, <span class="st">"Participation in Group Activities"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsami"</span>, <span class="st">"Frequency Meeting with Friends/Neighbors"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsasso"</span>, <span class="st">"Frequency Meeting with People in Organizations"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpscolleg"</span>, <span class="st">"Frequency Meeting with Colleagues Outside Work"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsfamil"</span>, <span class="st">"Frequency Meeting with Family Living Outside Household"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_mere_etude"</span>, <span class="st">"Mother's Level of Education"</span>, <span class="st">"qualitative"</span>,</span>
-<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_pere_etude"</span>, <span class="st">"Father's Level of Education"</span>, <span class="st">"qualitative"</span></span>
-<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-149"><a href="#cb7-149" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(variable_names, <span class="at">file =</span> <span class="st">"../data/out/variable_names.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaamb"</span>, <span class="st">"Extra-fees Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaomn"</span>, <span class="st">"Extra-fees General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaspe"</span>, <span class="st">"Extra-fees Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpapha"</span>, <span class="st">"Extra-fees Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpakin"</span>, <span class="st">"Extra-fees Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpainf"</span>, <span class="st">"Extra-fees Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaden"</span>, <span class="st">"Extra-fees Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpamat"</span>, <span class="st">"Extra-fees Equipment"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpatra"</span>, <span class="st">"Extra-fees Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaopt"</span>, <span class="st">"Extra-fees Optical"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpapro"</span>, <span class="st">"Extra-fees Prostheses"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_dpaurg"</span>, <span class="st">"Extra-fees Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Deductible (Franchise)</span></span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_framb"</span>, <span class="st">"Deduct. Outpatient"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_fromn"</span>, <span class="st">"Deduct. General Practitioner"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frspe"</span>, <span class="st">"Deduct. Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frpha"</span>, <span class="st">"Deduct. Pharmacy"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frkin"</span>, <span class="st">"Deduct. Physiotherapist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frinf"</span>, <span class="st">"Deduct. Nurse"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frden"</span>, <span class="st">"Deduct. Dentist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_frmat", "Deduct. Equipment", "numerical", # does not exist in the data</span></span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frtra"</span>, <span class="st">"Deduct. Transport"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_fropt", "Deduct. Optical", "numerical",</span></span>
+<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "SOINS_pf_frpro", "Deduct. Prostheses", "numerical",</span></span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_pf_frurg"</span>, <span class="st">"Deduct. Emergency w/o hospitalization"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_seac_omn"</span>, <span class="st">"No. Medical Sessions General Pract."</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SOINS_seac_spe"</span>,  <span class="st">"No. Medical Sessions Specialist"</span>, <span class="st">"numerical"</span>,</span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_cons"</span>, <span class="st">"Waiver General Practitioner"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_dent"</span>, <span class="st">"Waiver Dental Care"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_fin"</span>, <span class="st">"Waiver Other Health Care"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_loin"</span>, <span class="st">"Waiver Health Care Too Far"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OPINION1_renonc_long"</span>, <span class="st">"Waiver Appointment Delay Too Long"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Working conditions</span></span>
+<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_depech"</span>, <span class="st">"Have to Hurry to Do Job"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_liberte"</span>, <span class="st">"Very Little Freedom to Do Job"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_apprend"</span>, <span class="st">"Job Allows to Learn New Things"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_aidecol"</span>, <span class="st">"Colleagues Help Carry out Tasks"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_travnuit"</span>, <span class="st">"Job Requires not to Sleep Betw. Midnight and 5 a.m."</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-149"><a href="#cb7-149" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_repet"</span>, <span class="st">"Repetitive Work under Time Constraints / Line Job"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-150"><a href="#cb7-150" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_lourd"</span>, <span class="st">"Exposed to Carrying Heavy Loads"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-151"><a href="#cb7-151" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_posture"</span>, <span class="st">"Exposed to Painful Postures"</span>, <span class="st">"qualitative"</span>, </span>
+<span id="cb7-152"><a href="#cb7-152" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QST_ct_produit"</span>, <span class="st">"Exposed to Harmful/Toxic Products/Substances"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-153"><a href="#cb7-153" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb7-154"><a href="#cb7-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_association"</span>, <span class="st">"Participation in Group Activities"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-155"><a href="#cb7-155" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsami"</span>, <span class="st">"Frequency Meeting with Friends/Neighbors"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-156"><a href="#cb7-156" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsasso"</span>, <span class="st">"Frequency Meeting with People in Organizations"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-157"><a href="#cb7-157" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpscolleg"</span>, <span class="st">"Frequency Meeting with Colleagues Outside Work"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-158"><a href="#cb7-158" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_tpsfamil"</span>, <span class="st">"Frequency Meeting with Family Living Outside Household"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-159"><a href="#cb7-159" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_mere_etude"</span>, <span class="st">"Mother's Level of Education"</span>, <span class="st">"qualitative"</span>,</span>
+<span id="cb7-160"><a href="#cb7-160" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QES_pere_etude"</span>, <span class="st">"Father's Level of Education"</span>, <span class="st">"qualitative"</span></span>
+<span id="cb7-161"><a href="#cb7-161" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-162"><a href="#cb7-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-163"><a href="#cb7-163" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(variable_names, <span class="at">file =</span> <span class="st">"../data/out/variable_names.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We only keep the variables in the table <code>variable_names</code>, as well as those created at the end of <a href="data-load_data.html" class="quarto-xref">CHapter&nbsp;<span>1</span></a>.</p>
 <div class="cell">
@@ -821,15 +846,14 @@ Very Good, Good or Fairly Good
 <span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-missing-working-conditions" class="cell quarto-float anchored">
+<div id="tbl-missing-working-conditions" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-missing-working-conditions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;15.1: Missing values in the Working Conditions questions
 </figcaption>
 <div aria-describedby="tbl-missing-working-conditions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div>
-<table class="lightable-classic do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-classic do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
@@ -897,7 +921,6 @@ Table&nbsp;15.1: Missing values in the Working Conditions questions
 </table>
 
 
-</div>
 </div>
 </div>
 </figure>
@@ -978,15 +1001,14 @@ Executive and intellectual profession               Intermediate occupation
 <span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-missing-qes" class="cell quarto-float anchored">
+<div id="tbl-missing-qes" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-missing-qes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;15.2: Missing values in QES variables
 </figcaption>
 <div aria-describedby="tbl-missing-qes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div>
-<table class="lightable-classic do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-classic do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
@@ -1042,7 +1064,6 @@ Table&nbsp;15.2: Missing values in QES variables
 </table>
 
 
-</div>
 </div>
 </div>
 </figure>
@@ -1103,44 +1124,58 @@ Table&nbsp;15.2: Missing values in QES variables
                        0.5                        0.2 
          PERSONNE_rap_pcs8        PERSONNE_pb_depress 
                        0.1                        0.0 
-PERSONNE_score_t_corrected        PERSONNE_etat_sante 
+         PERSONNE_pb_asthm       PERSONNE_pb_bronchit 
                        0.0                        0.0 
-              PERSONNE_age              PERSONNE_sexe 
+     PERSONNE_pb_infarctus       PERSONNE_pb_coronair 
                        0.0                        0.0 
-           PERSONNE_couple            PERSONNE_statut 
+     PERSONNE_pb_hypertens            PERSONNE_pb_avc 
                        0.0                        0.0 
-              PERSONNE_ald               SOINS_ald_am 
+       PERSONNE_pb_arthros       PERSONNE_pb_lombalgi 
                        0.0                        0.0 
-             MENAGE_region                  MENAGE_tu 
+      PERSONNE_pb_cervical         PERSONNE_pb_diabet 
                        0.0                        0.0 
-             MENAGE_nbpers                 ensol_2011 
+       PERSONNE_pb_allergi        PERSONNE_pb_cirrhos 
                        0.0                        0.0 
-             MUTUELLE_assu             MUTUELLE_typcc 
+       PERSONNE_pb_urinair PERSONNE_score_t_corrected 
                        0.0                        0.0 
-      OPINION1_renonc_cons       OPINION1_renonc_dent 
+       PERSONNE_etat_sante               PERSONNE_age 
                        0.0                        0.0 
-       OPINION1_renonc_fin       OPINION1_renonc_loin 
+             PERSONNE_sexe            PERSONNE_couple 
                        0.0                        0.0 
-      OPINION1_renonc_long              QST_ct_depech 
+           PERSONNE_statut               PERSONNE_ald 
                        0.0                        0.0 
-            QST_ct_liberte             QST_ct_apprend 
+              SOINS_ald_am              MENAGE_region 
                        0.0                        0.0 
-            QST_ct_aidecol            QST_ct_travnuit 
+                 MENAGE_tu              MENAGE_nbpers 
                        0.0                        0.0 
-              QST_ct_repet               QST_ct_lourd 
+                ensol_2011              MUTUELLE_assu 
                        0.0                        0.0 
-            QST_ct_posture             QST_ct_produit 
+            MUTUELLE_typcc       OPINION1_renonc_cons 
                        0.0                        0.0 
-           QES_association                 QES_tpsami 
+      OPINION1_renonc_dent        OPINION1_renonc_fin 
                        0.0                        0.0 
-               QES_tpsasso              QES_tpscolleg 
+      OPINION1_renonc_loin       OPINION1_renonc_long 
                        0.0                        0.0 
-              QES_tpsfamil             QES_mere_etude 
+             QST_ct_depech             QST_ct_liberte 
                        0.0                        0.0 
-            QES_pere_etude               inf_q1_mhi_5 
+            QST_ct_apprend             QST_ct_aidecol 
                        0.0                        0.0 
-                        id                     status 
-                       0.0                        0.0 </code></pre>
+           QST_ct_travnuit               QST_ct_repet 
+                       0.0                        0.0 
+              QST_ct_lourd             QST_ct_posture 
+                       0.0                        0.0 
+            QST_ct_produit            QES_association 
+                       0.0                        0.0 
+                QES_tpsami                QES_tpsasso 
+                       0.0                        0.0 
+             QES_tpscolleg               QES_tpsfamil 
+                       0.0                        0.0 
+            QES_mere_etude             QES_pere_etude 
+                       0.0                        0.0 
+              inf_q1_mhi_5                         id 
+                       0.0                        0.0 
+                    status 
+                       0.0 </code></pre>
 </div>
 </div>
 <p>Ordinal variables need to be altered prior to the estimation (because of SHAP). We change them to numerical variables. To keep a track of the corresponding numerical values associated with each label, we create a table.</p>
@@ -1230,15 +1265,14 @@ PERSONNE_score_t_corrected        PERSONNE_etat_sante
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_drop =</span> n <span class="sc">-</span> dplyr<span class="sc">::</span><span class="fu">lag</span>(n)) <span class="sc">|&gt;</span> </span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-remaining-data-and-losses" class="cell quarto-float anchored">
+<div id="tbl-remaining-data-and-losses" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-remaining-data-and-losses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;15.3: Number of remaining data and loss of individuals due to missing data
 </figcaption>
 <div aria-describedby="tbl-remaining-data-and-losses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div>
-<table class="lightable-classic do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-classic do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">step</th>
@@ -1308,7 +1342,6 @@ Table&nbsp;15.3: Number of remaining data and loss of individuals due to missing
 
 </div>
 </div>
-</div>
 </figure>
 </div>
 </div>
@@ -1331,7 +1364,7 @@ Table&nbsp;15.3: Number of remaining data and loss of individuals due to missing
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_tmp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5392   81</code></pre>
+<pre><code>[1] 5392   94</code></pre>
 </div>
 </div>
 <p>Recall we coded missing values for categorical variables as <code>Not reported</code> and missing values because the individuals were not included in the sub-survey as <code>Not surveyed</code>. Let us look at how many observation fall into each of those categories:</p>
@@ -1345,7 +1378,7 @@ Table&nbsp;15.3: Number of remaining data and loss of individuals due to missing
 <span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">variable</th>
@@ -1355,161 +1388,226 @@ Table&nbsp;15.3: Number of remaining data and loss of individuals due to missing
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_asthm</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_bronchit</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_infarctus</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_coronair</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_hypertens</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_avc</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_arthros</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_lombalgi</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_cervical</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_diabet</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_allergi</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_cirrhos</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_urinair</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">PERSONNE_sexe</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">PERSONNE_couple</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">PERSONNE_statut</td>
 <td style="text-align: right;">587</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">PERSONNE_ss</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">PERSONNE_regime</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">PERSONNE_rap_pcs8</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">PERSONNE_ald</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">SOINS_ald_am</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">MUTUELLE_assu</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">671</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">MUTUELLE_typcc</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">671</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">OPINION1_renonc_cons</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">OPINION1_renonc_dent</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">OPINION1_renonc_fin</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">OPINION1_renonc_loin</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">OPINION1_renonc_long</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_depech</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QST_ct_liberte</td>
 <td style="text-align: right;">44</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_apprend</td>
 <td style="text-align: right;">29</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QST_ct_aidecol</td>
 <td style="text-align: right;">40</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_travnuit</td>
 <td style="text-align: right;">40</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QST_ct_repet</td>
 <td style="text-align: right;">43</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_lourd</td>
 <td style="text-align: right;">40</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QST_ct_posture</td>
 <td style="text-align: right;">40</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_produit</td>
 <td style="text-align: right;">37</td>
 <td style="text-align: right;">2655</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QES_association</td>
 <td style="text-align: right;">94</td>
 <td style="text-align: right;">17</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QES_tpsami</td>
 <td style="text-align: right;">127</td>
 <td style="text-align: right;">17</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QES_tpsasso</td>
 <td style="text-align: right;">239</td>
 <td style="text-align: right;">17</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QES_tpscolleg</td>
 <td style="text-align: right;">496</td>
 <td style="text-align: right;">17</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QES_tpsfamil</td>
 <td style="text-align: right;">143</td>
 <td style="text-align: right;">17</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QES_mere_etude</td>
 <td style="text-align: right;">93</td>
 <td style="text-align: right;">17</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QES_pere_etude</td>
 <td style="text-align: right;">86</td>
 <td style="text-align: right;">17</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">status</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
@@ -1544,7 +1642,7 @@ Table&nbsp;15.3: Number of remaining data and loss of individuals due to missing
 <span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">variable</th>
@@ -1553,130 +1651,182 @@ Table&nbsp;15.3: Number of remaining data and loss of individuals due to missing
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_asthm</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_bronchit</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_infarctus</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_coronair</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_hypertens</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_avc</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_arthros</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_lombalgi</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_cervical</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_diabet</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_allergi</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PERSONNE_pb_cirrhos</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PERSONNE_pb_urinair</td>
+<td style="text-align: right;">205</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">PERSONNE_sexe</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">PERSONNE_couple</td>
 <td style="text-align: right;">12</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">PERSONNE_statut</td>
 <td style="text-align: right;">587</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">PERSONNE_ss</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">PERSONNE_regime</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">PERSONNE_rap_pcs8</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">PERSONNE_ald</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">SOINS_ald_am</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">MUTUELLE_assu</td>
 <td style="text-align: right;">689</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">MUTUELLE_typcc</td>
 <td style="text-align: right;">671</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">OPINION1_renonc_cons</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">OPINION1_renonc_dent</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">OPINION1_renonc_fin</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">OPINION1_renonc_loin</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">OPINION1_renonc_long</td>
 <td style="text-align: right;">1118</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_depech</td>
 <td style="text-align: right;">2685</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QST_ct_liberte</td>
 <td style="text-align: right;">2699</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_apprend</td>
 <td style="text-align: right;">2684</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QST_ct_aidecol</td>
 <td style="text-align: right;">2695</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_travnuit</td>
 <td style="text-align: right;">2695</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QST_ct_repet</td>
 <td style="text-align: right;">2698</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_lourd</td>
 <td style="text-align: right;">2695</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QST_ct_posture</td>
 <td style="text-align: right;">2695</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QST_ct_produit</td>
 <td style="text-align: right;">2692</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QES_association</td>
 <td style="text-align: right;">111</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QES_tpsami</td>
 <td style="text-align: right;">144</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QES_tpsasso</td>
 <td style="text-align: right;">256</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QES_tpscolleg</td>
 <td style="text-align: right;">513</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QES_tpsfamil</td>
 <td style="text-align: right;">160</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">QES_mere_etude</td>
 <td style="text-align: right;">110</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">QES_pere_etude</td>
 <td style="text-align: right;">103</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">status</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -1705,10 +1855,35 @@ Table&nbsp;15.3: Number of remaining data and loss of individuals due to missing
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PERSONNE_couple <span class="sc">!=</span> <span class="st">"No answer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>For factor variables related to health conditions, we drop the unused levels.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_tmp <span class="ot">&lt;-</span> </span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="sc">|&gt;</span> </span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_asthm,</span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_bronchit,</span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_infarctus,</span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_coronair,</span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_hypertens,</span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_avc,</span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_arthros,</span>
+<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_lombalgi,</span>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_cervical,</span>
+<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_diabet,</span>
+<span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_allergi,</span>
+<span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_cirrhos,</span>
+<span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a>        PERSONNE_pb_urinair</span>
+<span id="cb64-19"><a href="#cb64-19" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb64-20"><a href="#cb64-20" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span><span class="fu">fct_drop</span>(.x)</span>
+<span id="cb64-21"><a href="#cb64-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb64-22"><a href="#cb64-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>And we save the results:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_tmp</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df_clean, <span class="at">file =</span> <span class="st">"../data/df_clean_sah.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_tmp</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(df_clean, <span class="at">file =</span> <span class="st">"../data/df_clean_sah.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1750,18 +1925,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1793,7 +1957,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1801,7 +1987,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
